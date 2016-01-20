@@ -1,5 +1,6 @@
-<?php namespace Sebwite\ProductDownloads\Block;
+<?php namespace Sebwite\ProductDownloads\Block\Product;
 
+use Magento\Framework\View\Element\Template;
 use Sebwite\ProductDownloads\Model\Download;
 
 /**
@@ -10,7 +11,7 @@ use Sebwite\ProductDownloads\Model\Download;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Downloads extends \Magento\Framework\View\Element\Template {
+class Downloads extends Template {
 
     /**
      * @var Download
@@ -32,6 +33,18 @@ class Downloads extends \Magento\Framework\View\Element\Template {
         $this->coreRegistry = $coreRegistry;
 
         parent::__construct($context);
+
+        $this->setTabTitle();
+    }
+
+    /**
+     * Set tab title
+     *
+     * @return void
+     */
+    public function setTabTitle()
+    {
+        $this->setTitle(__('Downloads'));
     }
 
     /**

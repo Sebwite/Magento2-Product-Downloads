@@ -1,8 +1,12 @@
 # README #
 
 Magento 2.0 Product Downloads extension
+![Alt text](header.jpg?raw=true "Magento Product Downloads")
 
-Adds a new tab on the product page to add downloads. This downloads will be shown an a product page.
+Adds a new tab on the product page to add downloads. This downloads will be shown in a tab on the product page. You can configure the allowed file extensions from the admin settings menu.
+
+## Screenshot
+![Alt text](screenshot.png?raw=true "Magento 2 Product downloads extension")
 
 ## Installation with composer (recommended)
 * Include the repository: `composer require sebwite/magento2-product-downloads`
@@ -19,5 +23,5 @@ Adds a new tab on the product page to add downloads. This downloads will be show
 
 After these steps the extra tab on the products page will be visible. This extension has no config options (yet)
 
-##Todo's:
-* Add config page (for setting alowed extensions)
+---
+[![Alt text](https://www.sebwite.nl/wp-content/themes/sebwite/assets/images/logo-sebwite.png "Sebwite.nl")](https://sebwite.nl)

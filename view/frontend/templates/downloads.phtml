@@ -1,0 +1,29 @@
+<?php
+/**
+ * Downloads section
+ *
+ * @var $block Sebwite\ProductDownloads\Block\Product\Downloads
+ */
+$downloads = $block->getDownloads();
+if( count($downloads) > 0 ) :
+    ?>
+    <div class="product-downloads">
+
+        <strong><?php echo __('Downloads'); ?></strong>
+
+        <ul>
+            <div class="download">
+                <?php foreach($downloads as $download) : ?>
+                    <li>
+                        <a class="c-product__info__item__content--download col-12-12"
+                           href="<?php echo $block->getDownloadUrl($download); ?>"
+                           target="_blank"><?php echo $download['download_file']; ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </div>
+        </ul>
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- .product-downloads -->
+<?php endif; ?>

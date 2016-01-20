@@ -1,5 +1,7 @@
 <?php namespace Sebwite\ProductDownloads\Block\Adminhtml\Product\Edit\Tab;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
+
 /**
  * Class:Download
  * Sebwite\ProductDownloads\Block\Adminhtml\Product\Edit\Tab
@@ -24,7 +26,7 @@ class Download extends \Magento\Backend\Block\Widget {
      * @var \Magento\Framework\Registry
      */
     protected $coreRegistry;
-
+    protected $defaultMimeTypes = ['pdf', 'docx', 'jpg', 'jpeg', 'png'];
     /**
      * @var \Sebwite\ProductDownloads\Model\Download
      */
@@ -33,23 +35,26 @@ class Download extends \Magento\Backend\Block\Widget {
      * @var \Magento\Framework\UrlInterface
      */
     private $urlBuilder;
+    /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
 
     /**
      * @param \Magento\Backend\Block\Template\Context  $context
      * @param \Magento\Framework\Registry              $coreRegistry
      * @param \Magento\Framework\UrlInterface          $urlBuilder
      * @param \Sebwite\ProductDownloads\Model\Download $download
+     * @param ScopeConfigInterface                     $scopeConfig
      * @param array                                    $data
      */
-    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Magento\Framework\UrlInterface $urlBuilder,
-
-                                \Sebwite\ProductDownloads\Model\Download $download,
-
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Magento\Framework\UrlInterface $urlBuilder, \Sebwite\ProductDownloads\Model\Download $download, ScopeConfigInterface $scopeConfig,
                                 array $data = [])
     {
         $this->coreRegistry = $coreRegistry;
         $this->download = $download;
         $this->urlBuilder = $urlBuilder;
+        $this->scopeConfig = $scopeConfig;
 
         parent::__construct($context, $data);
     }
@@ -134,5 +139,17 @@ class Download extends \Magento\Backend\Block\Widget {
     public function getDeleteUrl($downloadID)
     {
         return $this->_urlBuilder->getUrl(static::URL_PATH_DELETE) . '?download_id=' . $downloadID;
+    }
+
+    /**
+     * Get allowed extensions
+     *
+     * @return mixed
+     */
+    public function getExtensions()
+    {
+        $mimeTypes = $this->_scopeConfig->getValue('sebwite_productdownloads/general/extension');
+
+        return $mimeTypes;
     }
 }
