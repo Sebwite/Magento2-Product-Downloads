@@ -32,10 +32,6 @@ class Download extends \Magento\Backend\Block\Widget {
      */
     private $download;
     /**
-     * @var \Magento\Framework\UrlInterface
-     */
-    private $urlBuilder;
-    /**
      * @var ScopeConfigInterface
      */
     private $scopeConfig;
@@ -43,17 +39,15 @@ class Download extends \Magento\Backend\Block\Widget {
     /**
      * @param \Magento\Backend\Block\Template\Context  $context
      * @param \Magento\Framework\Registry              $coreRegistry
-     * @param \Magento\Framework\UrlInterface          $urlBuilder
      * @param \Sebwite\ProductDownloads\Model\Download $download
      * @param ScopeConfigInterface                     $scopeConfig
      * @param array                                    $data
      */
-    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Magento\Framework\UrlInterface $urlBuilder, \Sebwite\ProductDownloads\Model\Download $download, ScopeConfigInterface $scopeConfig,
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Sebwite\ProductDownloads\Model\Download $download, ScopeConfigInterface $scopeConfig,
                                 array $data = [])
     {
         $this->coreRegistry = $coreRegistry;
         $this->download = $download;
-        $this->urlBuilder = $urlBuilder;
         $this->scopeConfig = $scopeConfig;
 
         parent::__construct($context, $data);
