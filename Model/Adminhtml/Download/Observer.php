@@ -3,7 +3,6 @@
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Registry;
-use Sebwite\ProductDownloads\Model\Resource\Download;
 use Sebwite\ProductDownloads\Model\Upload;
 
 /**
@@ -17,25 +16,22 @@ use Sebwite\ProductDownloads\Model\Upload;
 class Observer implements \Magento\Framework\Event\ObserverInterface {
 
     /**
-     * @var Upload
+     * @var Magento\Framework\Registry
+     */
+    private $coreRegistry;
+    /**
+     * @var Sebwite\ProductDownloads\Model\Upload
      */
     private $upload;
     /**
-     * @var Download
+     * @var Magento\Backend\App\Action\Context
      */
-    private $download;
-    /**
-     * @var \Magento\Framework\ObjectManagerInterface
-     */
-    private $objectManager;
+    private $context;
 
-
-    public function __construct(Registry $coreRegistry, Upload $upload, \Sebwite\ProductDownloads\Model\Download $download, \Magento\Framework\ObjectManagerInterface $objectManager, Context $context)
+    public function __construct(Registry $coreRegistry, Upload $upload, Context $context)
     {
         $this->coreRegistry = $coreRegistry;
         $this->upload = $upload;
-        $this->download = $download;
-        $this->objectManager = $objectManager;
         $this->context = $context;
     }
 
@@ -64,8 +60,9 @@ class Observer implements \Magento\Framework\Event\ObserverInterface {
 
                 if( $uploadedDownload ) {
 
+                    $objectManager = $this->context->getObjectManager();
                     // Store date in database
-                    $download = $this->objectManager->create('Sebwite\ProductDownloads\Model\Download');
+                    $download = $objectManager->create('Sebwite\ProductDownloads\Model\Download');
 
                     $download->setDownloadUrl($uploadedDownload['file']);
                     $download->setDownloadFile($uploadedDownload['name']);
