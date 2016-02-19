@@ -1,7 +1,5 @@
 <?php namespace Sebwite\ProductDownloads\Block\Adminhtml\Product\Edit\Tab;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
 /**
  * Class:Download
  * Sebwite\ProductDownloads\Block\Adminhtml\Product\Edit\Tab
@@ -31,24 +29,18 @@ class Download extends \Magento\Backend\Block\Widget {
      * @var \Sebwite\ProductDownloads\Model\Download
      */
     private $download;
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
 
     /**
      * @param \Magento\Backend\Block\Template\Context  $context
      * @param \Magento\Framework\Registry              $coreRegistry
      * @param \Sebwite\ProductDownloads\Model\Download $download
-     * @param ScopeConfigInterface                     $scopeConfig
      * @param array                                    $data
      */
-    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Sebwite\ProductDownloads\Model\Download $download, ScopeConfigInterface $scopeConfig,
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Sebwite\ProductDownloads\Model\Download $download,
                                 array $data = [])
     {
         $this->coreRegistry = $coreRegistry;
         $this->download = $download;
-        $this->scopeConfig = $scopeConfig;
 
         parent::__construct($context, $data);
     }
