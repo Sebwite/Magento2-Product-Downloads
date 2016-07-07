@@ -8,9 +8,6 @@ $downloads = $block->getDownloads();
 if( count($downloads) > 0 ) :
     ?>
     <div class="product-downloads">
-
-        <strong><?php echo __('Downloads'); ?></strong>
-
         <ul>
             <div class="download">
                 <?php foreach($downloads as $download) : ?>
@@ -22,7 +19,6 @@ if( count($downloads) > 0 ) :
                 <?php endforeach; ?>
             </div>
         </ul>
-
         <div class="clearfix"></div>
     </div>
     <!-- .product-downloads -->
