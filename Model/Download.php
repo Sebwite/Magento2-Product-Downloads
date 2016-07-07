@@ -16,7 +16,8 @@ use Magento\Framework\Registry;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Download extends AbstractModel implements IdentityInterface {
+class Download extends AbstractModel implements IdentityInterface
+{
 
     /**
      * status enabled

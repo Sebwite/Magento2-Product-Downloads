@@ -12,7 +12,8 @@ use Sebwite\ProductDownloads\Model\DownloadFactory;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Index extends Action {
+class Index extends Action
+{
 
     /**
      * @var Download
@@ -46,8 +47,7 @@ class Index extends Action {
     {
         $resultRedirect = $this->resultRedirectFactory->create();
 
-        if( $downloadId = $_GET['download_id'] ) {
-
+        if ($downloadId = $_GET['download_id']) {
             $name = "";
 
             try {
@@ -63,7 +63,6 @@ class Index extends Action {
                 $resultRedirect->setPath('catalog/product/edit/*', ['id' => $productId, 'active_tab' => 'downloads']);
 
                 return $resultRedirect;
-
             } catch (\Exception $e) {
                 $this->_eventManager->dispatch('adminhtml_sebwite_productdownloads_delete_on_delete', ['name' => $name, 'status' => 'fail']);
                 // display error message

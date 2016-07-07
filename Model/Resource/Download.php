@@ -12,7 +12,8 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Download extends AbstractDb {
+class Download extends AbstractDb
+{
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -49,7 +50,7 @@ class Download extends AbstractDb {
      */
     public function load(AbstractModel $object, $value, $field = null)
     {
-        if( ! is_numeric($value) && is_null($field) ) {
+        if (! is_numeric($value) && is_null($field)) {
             $field = 'product_id';
         }
 

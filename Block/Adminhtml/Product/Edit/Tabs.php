@@ -8,7 +8,8 @@
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Tabs extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tabs {
+class Tabs extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tabs
+{
 
     protected function _prepareLayout()
     {
