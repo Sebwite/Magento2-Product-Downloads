@@ -47,7 +47,7 @@ class Index extends Action
     {
         $resultRedirect = $this->resultRedirectFactory->create();
 
-        if ($downloadId = $_GET['download_id']) {
+        if ($downloadId = $this->getRequest()->getParam('download_id')) {
             $name = "";
 
             try {
