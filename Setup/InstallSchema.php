@@ -12,7 +12,8 @@ use Magento\Framework\Setup\SchemaSetupInterface;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class InstallSchema implements InstallSchemaInterface {
+class InstallSchema implements InstallSchemaInterface
+{
 
     /**
      * Installs DB schema for a module

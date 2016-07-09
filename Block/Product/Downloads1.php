@@ -11,7 +11,8 @@ use Magento\Framework\View\Element\Template;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Downloads1 extends Template implements IdentityInterface {
+class Downloads1 extends Template implements IdentityInterface
+{
 
     /**
      * Core registry

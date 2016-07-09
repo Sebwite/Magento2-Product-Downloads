@@ -8,7 +8,8 @@
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2016, Sebwite. All rights reserved
  */
-class Download extends \Magento\Backend\Block\Widget {
+class Download extends \Magento\Backend\Block\Widget
+{
 
     /**
      * Delete URL
@@ -70,7 +71,7 @@ class Download extends \Magento\Backend\Block\Widget {
      */
     public function isNew()
     {
-        if( $this->getProduct()->getId() ) {
+        if ($this->getProduct()->getId()) {
             return false;
         }
 

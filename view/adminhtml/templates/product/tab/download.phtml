@@ -16,27 +16,22 @@
 <?php $downloads = $block->getDownloads(); ?>
 
 <fieldset class="fieldset form-inline">
-
-    <legend class="legend"><span><?php echo __('Product downloads') ?></span></legend>
-
-    <p><?php echo __('Allowed filetypes: '); ?><?php echo $block->getExtensions(); ?></p>
-
-    <br>
-
+    <legend class="legend"><span><?php echo __('Product Downloads') ?></span></legend>
+    <p><?php echo __('Allowed Filetypes'); ?>: <?php echo $block->getExtensions(); ?></p>
+    <br />
     <div id="table_downloads">
-
         <?php for($i = 0; $i < 10; $i++) : ?>
 
             <?php $fileIndex = $i + 1; ?>
 
             <div class="field">
                 <label class="label" for="product_download_<?php echo $fileIndex; ?>">
-                    <span><?php echo __('File ') . $fileIndex ?></span>
+                    <span><?php echo __('File') . ' ' . $fileIndex ?></span>
                 </label>
 
                 <div class="control">
                     <?php if(isset($downloads[$i])) : ?>
-                    <a href="<?php echo $block->getDownloadUrl($downloads[$i]); ?>" target="_BLANK"><?php echo $downloads[$i]['download_file']; ?></a></span> - <a href="<?php echo $block->getDeleteUrl($downloads[$i]['download_id']); ?>">verwijder</a>
+                    <a href="<?php echo $block->getDownloadUrl($downloads[$i]); ?>" target="_BLANK"><?php echo $downloads[$i]['download_file']; ?></a></span> - <a href="<?php echo $block->getDeleteUrl($downloads[$i]['download_id']); ?>"><?php echo __('Remove'); ?></a>
                 <?php else : ?>
                     <input type="file" id="product_download_<?php echo $fileIndex; ?>" name="downloads[]" value="1" />
                 <?php endif; ?>
@@ -44,7 +39,6 @@
             </div>
 
         <?php endfor; ?>
-
     </div>
     <!-- #table_downloads -->
 </fieldset>

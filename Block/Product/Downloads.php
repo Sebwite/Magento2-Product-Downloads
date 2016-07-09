@@ -11,7 +11,8 @@ use Sebwite\ProductDownloads\Model\Download;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Downloads extends Template {
+class Downloads extends Template
+{
 
     /**
      * @var Download

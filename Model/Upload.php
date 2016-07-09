@@ -15,7 +15,8 @@ use Magento\MediaStorage\Model\File\UploaderFactory;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Upload {
+class Upload
+{
 
     /**
      * uploader factory
@@ -73,9 +74,8 @@ class Upload {
             $result = $uploader->save($this->uploadPath);
 
             return $result;
-
         } catch (\Exception $e) {
-            if( $e->getCode() != Uploader::TMP_NAME_EMPTY ) {
+            if ($e->getCode() != Uploader::TMP_NAME_EMPTY) {
                 throw new \Magento\Framework\Validator\Exception(__('Disallowed file type, only these file types are allowed: %s.', implode(', ', $this->getMimeTimes())));
             }
         }
@@ -92,7 +92,7 @@ class Upload {
 
         $cleanMimeTypes = [];
 
-        foreach(explode(',', $mimeTypes) as $mimeType) {
+        foreach (explode(',', $mimeTypes) as $mimeType) {
             array_push($cleanMimeTypes, strtolower(trim($mimeType)));
         }
 

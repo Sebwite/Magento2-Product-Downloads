@@ -13,7 +13,8 @@ use Sebwite\ProductDownloads\Model\Upload;
  * @package     Sebwite\ProductDownloads
  * @copyright   Copyright (c) 2015, Sebwite. All rights reserved
  */
-class Observer implements \Magento\Framework\Event\ObserverInterface {
+class Observer implements \Magento\Framework\Event\ObserverInterface
+{
 
     /**
      * @var Magento\Framework\Registry
@@ -46,20 +47,19 @@ class Observer implements \Magento\Framework\Event\ObserverInterface {
     {
         $downloads = $this->context->getRequest()->getFiles('downloads', -1);
 
-        if( $downloads != '-1' ) {
+        if ($downloads != '-1') {
 
             // Get current product
             $product = $this->coreRegistry->registry('product');
             $productId = $product->getId();
 
             // Loop through uploaded downlaods
-            foreach($downloads as $download) {
+            foreach ($downloads as $download) {
 
                 // Upload file
                 $uploadedDownload = $this->upload->uploadFile($download);
 
-                if( $uploadedDownload ) {
-
+                if ($uploadedDownload) {
                     $objectManager = $this->context->getObjectManager();
                     // Store date in database
                     $download = $objectManager->create('Sebwite\ProductDownloads\Model\Download');
