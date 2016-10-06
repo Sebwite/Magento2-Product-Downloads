@@ -75,6 +75,36 @@ class Download extends AbstractDb
     }
 
     /**
+     * Retrieve all Downloads for product - within the desired store view.
+     *
+     * @param $id
+     * @param null $storeId
+     * @param bool $fallbackToDefault
+     * @return array
+     */
+    public function getDownloadsForProductInStore($id, $storeId = null, $fallbackToDefault = true)
+    {
+        $adapter = $this->getConnection();
+
+        if (is_null($storeId)) {
+            $storeId = 0;
+        }
+
+        $storeWhereStatement = (int) $storeId;
+
+        if ($fallbackToDefault) {
+            $storeWhereStatement = 'IF((SELECT COUNT(*) AS count FROM ' . $this->getMainTable() . ' WHERE store_id = '. (int) $storeId .') > 0, ' . (int) $storeId . ', 0)';
+        }
+
+        $select = $adapter->select()->from($this->getMainTable())->where('product_id = :product_id AND store_id = ' . $storeWhereStatement);
+        $binds = [
+            'product_id' => (int) $id
+        ];
+
+        return $adapter->fetchAll($select, $binds);
+    }
+
+    /**
      * Check if author url_key exist
      * return author id if author exists
      *
