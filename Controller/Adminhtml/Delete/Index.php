@@ -56,11 +56,12 @@ class Index extends Action
                 $download->load($downloadId);
                 $name = $download->getName();
                 $productId = $download['product_id'];
+                $storeId = $download['store_id'];
                 $download->delete();
                 $this->messageManager->addSuccess(__('The download has been deleted.'));
                 $this->_eventManager->dispatch('adminhtml_sebwite_productdownloads_download_on_delete', ['name' => $name, 'status' => 'success']);
 
-                $resultRedirect->setPath('catalog/product/edit/*', ['id' => $productId, 'active_tab' => 'downloads']);
+                $resultRedirect->setPath('catalog/product/edit/*', ['id' => $productId, 'active_tab' => 'downloads', 'store' => $storeId]);
 
                 return $resultRedirect;
             } catch (\Exception $e) {
@@ -68,7 +69,7 @@ class Index extends Action
                 // display error message
                 $this->messageManager->addError($e->getMessage());
                 // go back to edit form
-                $resultRedirect->setPath('catalog/product/edit/', ['id' => $productId, 'active_tab' => 'downloads']);
+                $resultRedirect->setPath('catalog/product/edit/', ['id' => $productId, 'active_tab' => 'downloads', 'store' => $storeId]);
 
                 return $resultRedirect;
             }

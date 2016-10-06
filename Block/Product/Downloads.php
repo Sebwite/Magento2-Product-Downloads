@@ -55,7 +55,8 @@ class Downloads extends Template
      */
     public function getDownloads()
     {
-        return $this->download->getDownloadsForProduct($this->getProduct()->getId());
+        $product = $this->getProduct();
+        return $this->download->getDownloadsForProductInStore($product->getId(), $product->getStoreId());
     }
 
     /**

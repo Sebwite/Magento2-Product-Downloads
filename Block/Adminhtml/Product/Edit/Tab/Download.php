@@ -19,6 +19,7 @@ class Download extends \Magento\Backend\Block\Widget
      * @var string
      */
     protected $_template = 'product/tab/download.phtml';
+
     /**
      * Core registry
      *
@@ -37,8 +38,12 @@ class Download extends \Magento\Backend\Block\Widget
      * @param \Sebwite\ProductDownloads\Model\Download $download
      * @param array                                    $data
      */
-    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $coreRegistry, \Sebwite\ProductDownloads\Model\Download $download,
-                                array $data = [])
+    public function __construct(
+        \Magento\Backend\Block\Template\Context $context,
+        \Magento\Framework\Registry $coreRegistry,
+        \Sebwite\ProductDownloads\Model\Download $download,
+        array $data = []
+    )
     {
         $this->coreRegistry = $coreRegistry;
         $this->download = $download;
@@ -103,7 +108,8 @@ class Download extends \Magento\Backend\Block\Widget
      */
     public function getDownloads()
     {
-        return $this->download->getResource()->getDownloadsForProduct($this->getProduct()->getId());
+        $product = $this->getProduct();
+        return $this->download->getResource()->getDownloadsForProductInStore($product->getId(), $product->getStoreId(), false);
     }
 
     /**

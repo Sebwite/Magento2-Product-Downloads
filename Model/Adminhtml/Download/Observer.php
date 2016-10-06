@@ -52,8 +52,9 @@ class Observer implements \Magento\Framework\Event\ObserverInterface
             // Get current product
             $product = $this->coreRegistry->registry('product');
             $productId = $product->getId();
+            $storeId = $product->getStoreId();
 
-            // Loop through uploaded downlaods
+            // Loop through uploaded downloads
             foreach ($downloads as $download) {
 
                 // Upload file
@@ -68,6 +69,7 @@ class Observer implements \Magento\Framework\Event\ObserverInterface
                     $download->setDownloadFile($uploadedDownload['name']);
                     $download->setDownloadType($uploadedDownload['type']);
                     $download->setProductId($productId);
+                    $download->setStoreId($storeId);
                     $download->save();
                 }
             }

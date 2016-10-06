@@ -131,6 +131,19 @@ class Download extends AbstractModel implements IdentityInterface
     }
 
     /**
+     * Get downloads
+     *
+     * @param $downloadId
+     * @param null $storeId
+     * @param bool $fallbackToDefault
+     * @return mixed
+     */
+    public function getDownloadsForProductInStore($downloadId, $storeId = null, $fallbackToDefault = true)
+    {
+        return $this->getResource()->getDownloadsForProductInStore($downloadId, $storeId, $fallbackToDefault);
+    }
+
+    /**
      * Initialize resource model
      *
      * @return void
