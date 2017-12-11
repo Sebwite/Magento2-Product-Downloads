@@ -1,3 +1,6 @@
 <?php
-
-\Magento\Framework\Component\ComponentRegistrar::register(\Magento\Framework\Component\ComponentRegistrar::MODULE, 'Sebwite_ProductDownloads', __DIR__);
+\Magento\Framework\Component\ComponentRegistrar::register(
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'Sebwite_ProductDownloads',
+    __DIR__
+);

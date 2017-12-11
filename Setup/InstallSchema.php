@@ -31,7 +31,15 @@ class InstallSchema implements InstallSchemaInterface
         /**
          * Create table 'downloadable_link'
          */
-        $table = $installer->getConnection()->newTable($installer->getTable('sebwite_product_downloads'))->addColumn('download_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true], 'Download ID')->addColumn('product_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['unsigned' => true, 'nullable' => false, 'default' => '0'], 'Product ID')->addColumn('number_of_downloads', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['nullable' => true], 'Number of downloads')->addColumn('download_url', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Download Url')->addColumn('download_file', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Download File')->addColumn('download_type', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 20, [], 'Download Type')->addIndex($installer->getIdxName('sebwite_product_downloads', ['product_id']), ['product_id'])->setComment('Product downloads table');
+        $table = $installer->getConnection()
+            ->newTable($installer->getTable('sebwite_product_downloads'))
+            ->addColumn('download_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true], 'Download ID')
+            ->addColumn('product_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['unsigned' => true, 'nullable' => false, 'default' => '0'], 'Product ID')
+            ->addColumn('number_of_downloads', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['nullable' => true], 'Number of downloads')->addColumn('download_url', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Download Url')
+            ->addColumn('download_file', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 255, [], 'Download File')
+            ->addColumn('download_type', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 20, [], 'Download Type')
+            ->addIndex($installer->getIdxName('sebwite_product_downloads', ['product_id']), ['product_id'])
+            ->setComment('Product downloads table');
 
         $installer->getConnection()->createTable($table);
 
