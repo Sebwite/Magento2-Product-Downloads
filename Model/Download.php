@@ -62,7 +62,7 @@ class Download extends AbstractModel implements IdentityInterface
     /**
      * @var string
      */
-    private $uploadFolder = 'sebwite/productdownloads/';
+    private $uploadFolder = 'sebwite/productdownloads';
 
     public function __construct(FilterManager $filter, Context $context, Registry $registry, AbstractResource $resource = null, AbstractDb $resourceCollection = null, array $data = [])
     {
@@ -101,7 +101,7 @@ class Download extends AbstractModel implements IdentityInterface
      */
     public function getUrl($download)
     {
-        return 'pub/media/' . $this->uploadFolder . $download['download_url'];
+        return 'media/' . $this->uploadFolder . $download['download_url'];
     }
 
     /**
